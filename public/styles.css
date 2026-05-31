@@ -31,11 +31,52 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji",
     "Segoe UI Emoji";
   color: var(--fg);
-  background: radial-gradient(800px 420px at 20% 10%, rgba(255, 79, 216, 0.14), transparent 60%),
-    radial-gradient(900px 520px at 80% 15%, rgba(178, 255, 77, 0.14), transparent 62%),
-    linear-gradient(180deg, #050607, #06090a 55%, #050607);
+  background: radial-gradient(880px 520px at 18% 6%, rgba(255, 79, 216, 0.12), transparent 62%),
+    radial-gradient(980px 620px at 84% 12%, rgba(255, 228, 77, 0.14), transparent 64%),
+    radial-gradient(860px 560px at 70% 38%, rgba(178, 255, 77, 0.10), transparent 62%),
+    linear-gradient(180deg, #040510, #050713 55%, #040510);
   line-height: 1.45;
   letter-spacing: 0.1px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.018) 0,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 10px
+    ),
+    radial-gradient(980px 720px at 18% 18%, rgba(255, 228, 77, 0.08), transparent 62%),
+    radial-gradient(860px 620px at 78% 22%, rgba(255, 79, 216, 0.06), transparent 64%);
+  opacity: 0.26;
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(700px 520px at 16% 10%, rgba(255, 228, 77, 0.10), transparent 60%),
+    radial-gradient(820px 620px at 74% 18%, rgba(178, 255, 77, 0.06), transparent 62%),
+    radial-gradient(760px 560px at 65% 65%, rgba(255, 79, 216, 0.06), transparent 64%),
+    linear-gradient(180deg, rgba(4, 5, 16, 0.00), rgba(4, 5, 16, 0.40) 70%, rgba(4, 5, 16, 0.55));
+  opacity: 0.75;
+  z-index: 0;
+}
+
+.topbar,
+.container,
+.footer {
+  position: relative;
+  z-index: 1;
 }
 
 a {
@@ -159,7 +200,7 @@ a {
 }
 
 .hero {
-  padding: 34px 0 18px;
+  padding: 40px 0 22px;
 }
 
 .hero__grid {
@@ -266,16 +307,47 @@ a {
 
 .hero-visual {
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: clamp(320px, 42vw, 520px);
+  border-color: rgba(255, 255, 255, 0.20);
+  box-shadow: 0 26px 110px rgba(0, 0, 0, 0.62);
 }
 
 .hero-illustration {
   position: absolute;
-  inset: -18px -18px auto -18px;
-  height: 220px;
-  width: calc(100% + 36px);
+  inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
   opacity: 0.95;
   pointer-events: none;
+}
+
+.hero-visual.card::before {
+  background-image: radial-gradient(transparent 60%, rgba(178, 255, 77, 0.10) 85%, transparent 92%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.06) 0,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px,
+      transparent 7px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 11px
+    );
+  opacity: 0.20;
+  mask-image: radial-gradient(70% 70% at 18% 18%, black 52%, transparent 86%);
+}
+
+.hero-visual {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.55);
 }
 
 .hero-visual .card__title,
@@ -285,17 +357,39 @@ a {
   z-index: 1;
 }
 
-.hero-visual .card__title {
-  margin-top: 150px;
-}
-
 .hero-visual::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(5, 6, 7, 0.06), rgba(5, 6, 7, 0.78) 60%, rgba(5, 6, 7, 0.90));
+  background: radial-gradient(520px 340px at 78% 18%, rgba(255, 228, 77, 0.12), transparent 62%),
+    radial-gradient(520px 340px at 26% 10%, rgba(255, 79, 216, 0.10), transparent 66%),
+    linear-gradient(180deg, rgba(4, 5, 16, 0.02), rgba(4, 5, 16, 0.72) 52%, rgba(4, 5, 16, 0.92));
   z-index: 0;
   pointer-events: none;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: -2px;
+  bottom: -2px;
+  z-index: 2;
+  pointer-events: none;
+  background-image: linear-gradient(180deg, rgba(233, 242, 239, 0.10), rgba(233, 242, 239, 0.00)),
+    linear-gradient(0deg, rgba(233, 242, 239, 0.10), rgba(233, 242, 239, 0.00)),
+    radial-gradient(520px 360px at 15% 18%, rgba(255, 228, 77, 0.10), transparent 62%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 18px
+    );
+  mask-image: linear-gradient(180deg, black 0 28px, transparent 68px calc(100% - 68px), black calc(100% - 28px) 100%);
+  opacity: 0.40;
+  mix-blend-mode: overlay;
 }
 
 .card__copy {
@@ -315,7 +409,7 @@ a {
 }
 
 .section {
-  padding: 18px 0;
+  padding: 22px 0;
 }
 
 .section-copy {
@@ -349,10 +443,11 @@ a {
 .feature {
   padding: 12px 14px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.14);
   color: rgba(233, 242, 239, 0.92);
   font-weight: 650;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.26);
 }
 
 .feature--wide {
@@ -360,6 +455,32 @@ a {
   color: rgba(233, 242, 239, 0.86);
   border-color: rgba(255, 79, 216, 0.20);
   background: rgba(255, 79, 216, 0.06);
+}
+
+.feature {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(220px 160px at 18% 30%, rgba(255, 228, 77, 0.08), transparent 62%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 16px
+    );
+  opacity: 0.25;
+  mix-blend-mode: overlay;
+}
+
+.feature--wide::after {
+  opacity: 0.30;
 }
 
 .pilot {
@@ -376,9 +497,9 @@ a {
 
 .card {
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.40);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.48);
   padding: 16px;
   position: relative;
   overflow: hidden;
@@ -393,6 +514,24 @@ a {
   opacity: 0.45;
   pointer-events: none;
   mask-image: radial-gradient(60% 60% at 20% 20%, black 50%, transparent 80%);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 14px
+  ),
+    radial-gradient(520px 360px at 20% 18%, rgba(255, 228, 77, 0.05), transparent 60%),
+    radial-gradient(560px 400px at 78% 20%, rgba(255, 79, 216, 0.04), transparent 64%);
+  opacity: 0.26;
+  mix-blend-mode: overlay;
 }
 
 .card__title {
@@ -433,8 +572,8 @@ a {
   margin: 0 0 14px;
   padding: 14px 14px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 79, 216, 0.08);
-  border: 1px solid rgba(255, 79, 216, 0.22);
+  background: rgba(255, 228, 77, 0.05);
+  border: 1px solid rgba(255, 228, 77, 0.18);
   color: rgba(233, 242, 239, 0.92);
 }
 
@@ -446,7 +585,7 @@ a {
 
 .trust__panel {
   border-radius: var(--radius-sm);
-  background: rgba(178, 255, 77, 0.06);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.10);
   padding: 14px;
 }
@@ -504,7 +643,7 @@ a {
   }
 
   .hero__grid {
-    grid-template-columns: 1.3fr 0.9fr;
+    grid-template-columns: 1.15fr 1fr;
     align-items: start;
     gap: 26px;
   }
@@ -517,12 +656,8 @@ a {
     font-size: 20px;
   }
 
-  .hero-illustration {
-    height: 280px;
-  }
-
-  .hero-visual .card__title {
-    margin-top: 195px;
+  .hero-visual {
+    min-height: 520px;
   }
 
   .trust__grid {
@@ -539,5 +674,11 @@ a {
 
   .not-instead {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-visual {
+    min-height: 290px;
   }
 }
